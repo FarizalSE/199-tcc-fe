@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
+import { BASE_URL } from '../Utils';
 
 const EditNote = () => {
 
@@ -16,7 +17,7 @@ const EditNote = () => {
     async function updateNotes(e) {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/edit-notes/${id}`, { judul, catatan });
+            await axios.put(`${BASE_URL}/edit-notes/${id}`, { judul, catatan });
             navigate('/');
         } catch (error) {
             console.log(error);
@@ -24,7 +25,7 @@ const EditNote = () => {
     }
 
     const getNotesById = async () => {
-        const res = await axios.get(`http://localhost:5000/notes/${id}`);
+        const res = await axios.get(`${BASE_URL}/notes/${id}`);
         setJudul(res.data.judul);
         setCatatan(res.data.catatan);
     }

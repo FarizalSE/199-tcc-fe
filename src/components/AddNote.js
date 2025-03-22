@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { BASE_URL } from '../Utils';
 
 const AddNote = () => {
 
@@ -12,7 +13,7 @@ const AddNote = () => {
         e.preventDefault();
         console.log("Tombol ditekan")
         try {
-            await axios.post("http://localhost:5000/add-notes", {judul, catatan});
+            await axios.post(`${BASE_URL}/add-user`, {judul, catatan});
             console.log("Data berhasil ditambahkan");
             navigate('/');
         } catch (error) {
