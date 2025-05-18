@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../Utils";
 
 
 const NotesList = () => {
     const [notes, setNotes] = useState([]);
-    
+    const Navigate = useNavigate();
     useEffect(() => {
         getNotes();
     }, []);
 
     const getNotes = async () => {
+        const token = localStorage.getItem('accessToken');
         const res = await axios.get(`${BASE_URL}/notes`);
+        console.log({token})
+        localStorage.setItem(`token`, token);
         setNotes(res.data); 
     };
 
@@ -22,6 +25,16 @@ const NotesList = () => {
             getNotes();
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    const logout = async () => {
+        try {
+            await axios.delete(`${BASE_URL}/logout`);
+            console.log("Tombol berhasil ditekan, dan berhasil logout");
+            Navigate(`/login`);
+        } catch (error) {
+            console.log("logout gagal", error);
         }
     }
 
@@ -53,6 +66,16 @@ const NotesList = () => {
                     ))}
                 </tbody>
             </table>
+            <div className="columns is-mobile">
+                <div className="column has-text-centered">
+                    <Link to={`/users`} className="button is-primary is-small">
+                    Admin
+                </Link>
+                </div>
+                <div className="column has-text-centered">
+                    <button onClick={logout} className="button is-danger is-small">Logout</button>
+                </div>
+            </div>
         </div>
     </div>
   )

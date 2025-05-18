@@ -13,7 +13,7 @@ const AddNote = () => {
         e.preventDefault();
         console.log("Tombol ditekan")
         try {
-            await axios.post(`${BASE_URL}/add-user`, {judul, catatan});
+            await axios.post(`${BASE_URL}/add-notes`, {judul, catatan});
             console.log("Data berhasil ditambahkan");
             navigate('/');
         } catch (error) {
