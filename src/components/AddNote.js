@@ -15,7 +15,7 @@ const AddNote = () => {
         try {
             await axios.post(`${BASE_URL}/add-notes`, {judul, catatan});
             console.log("Data berhasil ditambahkan");
-            navigate('/');
+            navigate('/notes');
         } catch (error) {
             console.log(error);
             console.log("Data gagal ditambahkan");

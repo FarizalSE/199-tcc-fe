@@ -18,7 +18,7 @@ const EditNote = () => {
         e.preventDefault();
         try {
             await axios.put(`${BASE_URL}/edit-notes/${id}`, { judul, catatan });
-            navigate('/');
+            navigate('/notes');
         } catch (error) {
             console.log(error);
         }

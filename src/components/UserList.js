@@ -37,7 +37,7 @@ const UserList = () => {
   return (
     <div className="columns mt-5 is-centered">
         <div className="column is-half">
-            <Link to={`/`} className="button">Kembali</Link>
+            <Link to={`/notes`} className="button">Kembali</Link>
             <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
