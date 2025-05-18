@@ -96,7 +96,7 @@ const CreateUser = () => {
                                     Daftar
                                 </button>
                                 <br />
-                                <Link to="/login" className="button is-light is-fullwidth">
+                                <Link to="/" className="button is-light is-fullwidth">
                                     Sudah punya akun? Login
                                 </Link>
                             </div>
