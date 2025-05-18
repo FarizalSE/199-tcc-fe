@@ -19,7 +19,7 @@ const UserLogin = () => {
                 console.log("Selamat, anda berhasil melakukan login");
                 localStorage.setItem("accessToken", response.data.accessToken);
                 console.log("AccesToken : ", response.data.accessToken);
-                Navigate("/");
+                Navigate("/notes");
             }
         } catch (error) {
             console.log(error);

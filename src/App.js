@@ -10,13 +10,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<NotesList/>}/>
-        <Route path="/login" element={<UserLogin/>}/>
-        <Route path="/register" element={<CreateUser />} />
-        <Route path="/logout" element={<UserLogin />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/add" element={<AddNote />} />
-        <Route path="/edit/:id" element={<EditNote />} />
+        <Route path="/" element={<UserLogin/>}/>
+        <Route path="/register" element={<CreateUser/>}/>
+        <Route path="/notes" element={<NotesList/>}/>
+        <Route path="/logout" element={<UserLogin/>}/>
+        <Route path="/users" element={<UserList />}/>
+        <Route path="/add" element={<AddNote />}/>
+        <Route path="/edit/:id" element={<EditNote />}/>
       </Routes>
     </BrowserRouter>
   );
