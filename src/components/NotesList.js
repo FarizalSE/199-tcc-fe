@@ -32,7 +32,7 @@ const NotesList = () => {
         try {
             await axios.delete(`${BASE_URL}/logout`);
             console.log("Tombol berhasil ditekan, dan berhasil logout");
-            Navigate(`/login`);
+            Navigate(`/`);
         } catch (error) {
             console.log("logout gagal", error);
         }
