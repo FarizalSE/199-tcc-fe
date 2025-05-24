@@ -73,7 +73,7 @@ const NotesList = () => {
                 </Link>
                 </div>
                 <div className="column has-text-centered">
-                    <button onClick={logout} className="button is-danger is-small">Logout</button>
+                    <button onClick={logout} className="button is-danger is-small">Log-out</button>
                 </div>
             </div>
         </div>
