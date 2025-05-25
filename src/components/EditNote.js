@@ -19,7 +19,7 @@ const EditNote = () => {
         try {
             const token = localStorage.getItem('accessToken');
             await axios.put(`${BASE_URL}/edit-notes/${id}`, {
-                Headers : {
+                headers : {
                     Authorization : `Bearer ${token}`
                 }
             } ,{ judul, catatan });
@@ -33,7 +33,7 @@ const EditNote = () => {
     const getNotesById = async () => {
         const token = localStorage.getItem('accessToken');
         const res = await axios.get(`${BASE_URL}/notes/${id}`, {
-            Headers : {
+            headers : {
                 Authorization : `Bearer ${token}`
             }
         });

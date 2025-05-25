@@ -11,9 +11,15 @@ const AddNote = () => {
 
     const saveNotes = async (e) => {
         e.preventDefault();
-        console.log("Tombol ditekan")
+        console.log("Tombol ditekan");
+        const token = localStorage.getItem('accessToken');
+        console.log({token});
         try {
-            await axios.post(`${BASE_URL}/add-notes`, {judul, catatan});
+            await axios.post(`${BASE_URL}/add-notes`, {
+                headers : {
+                    Authorization : `bearer ${token}`
+                }
+            }, {judul, catatan});
             console.log("Data berhasil ditambahkan");
             navigate('/notes');
         } catch (error) {
