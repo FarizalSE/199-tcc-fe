@@ -13,12 +13,8 @@ const UserList = () => {
 
     const getUsers = async () => {
         try {
-            const token = localStorage.getItem('accessToken');
-            const response = await axios.get(`${BASE_URL}/users`, {
-                headers : {
-                    Authorization : `Bearer ${token}`
-                }
-            });
+            
+            const response = await axios.get(`${BASE_URL}/users`);
             setUsers(response.data);
         } catch (error) {
             console.error("Unauthorized or error:", error);

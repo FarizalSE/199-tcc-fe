@@ -17,7 +17,13 @@ const EditNote = () => {
     async function updateNotes(e) {
         e.preventDefault();
         try {
-            await axios.put(`${BASE_URL}/edit-notes/${id}`, { judul, catatan });
+            const token = localStorage.getItem('accessToken');
+            await axios.put(`${BASE_URL}/edit-notes/${id}`, {
+                Headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            } ,{ judul, catatan });
+            console.log({token});
             navigate('/notes');
         } catch (error) {
             console.log(error);
@@ -25,7 +31,12 @@ const EditNote = () => {
     }
 
     const getNotesById = async () => {
-        const res = await axios.get(`${BASE_URL}/notes/${id}`);
+        const token = localStorage.getItem('accessToken');
+        const res = await axios.get(`${BASE_URL}/notes/${id}`, {
+            Headers : {
+                Authorization : `Bearer ${token}`
+            }
+        });
         setJudul(res.data.judul);
         setCatatan(res.data.catatan);
     }
