@@ -38,6 +38,15 @@ const NotesList = () => {
         }
     }
 
+    const refreshtoken = async () => {
+        try {
+            await axios.get(`${BASE_URL}/token`);
+            console.log("Token berhasil di refresh!");
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
   return (
     <div className="columns mt-5 is-centered">
         <div className="column is-half">
@@ -74,6 +83,9 @@ const NotesList = () => {
                 </div>
                 <div className="column has-text-centered">
                     <button onClick={logout} className="button is-danger is-small">Log-out</button>
+                </div>
+                <div className="column has-text-centered">
+                    <button onClick={refreshtoken} className="button is-danger is-small">Refresh</button>
                 </div>
             </div>
         </div>
