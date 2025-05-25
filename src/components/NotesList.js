@@ -7,12 +7,12 @@ import { BASE_URL } from "../Utils";
 const NotesList = () => {
     const [notes, setNotes] = useState([]);
     const Navigate = useNavigate();
-    const token = localStorage.getItem('accessToken');
     useEffect(() => {
         getNotes();
     }, []);
 
     const getNotes = async () => {
+        const token = localStorage.getItem('accessToken');
         const res = await axios.get(`${BASE_URL}/notes`, {
             headers : {
                 Authorization : `Bearer ${token}`
@@ -25,7 +25,12 @@ const NotesList = () => {
 
     const deleteNotes = async (id) => {
         try {
-            await axios.delete(`${BASE_URL}/delete-notes/${id}`);
+            const token = localStorage.getItem('accessToken');
+            await axios.delete(`${BASE_URL}/delete-notes/${id}`, {
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            });
             getNotes();
         } catch (error) {
             console.log(error);
